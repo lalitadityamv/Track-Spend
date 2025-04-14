@@ -9,7 +9,7 @@ import {
 import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
 import qs from "query-string";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { accounts } from "@/db/schema";
+
 import { useGetSummary } from "@/features/summary/api/use-get-summary";
 
 export const AccountFilter = () => {
@@ -17,9 +17,7 @@ export const AccountFilter = () => {
   const pathname = usePathname();
   const params = useSearchParams();
   const accountId = params.get("accountId") || "all";
-  const {
-    isLoading:isLoadingSummary
-  }=useGetSummary();
+  const { isLoading: isLoadingSummary } = useGetSummary();
   const { data: accounts, isLoading: isLoadingAccounts } = useGetAccounts();
   const from = params.get("from") || "";
   const to = params.get("to") || "";
@@ -45,7 +43,11 @@ export const AccountFilter = () => {
     router.push(url);
   };
   return (
-    <Select value={accountId} onValueChange={onChange} disabled={isLoadingSummary || isLoadingAccounts}>
+    <Select
+      value={accountId}
+      onValueChange={onChange}
+      disabled={isLoadingSummary || isLoadingAccounts}
+    >
       <SelectTrigger
         className="lg:w-auto w-full h9 rounded-md px-3 bg-white text-stone-900 
         font-normal border border-stone-200 data-[state=open]:bg-stone-100 
