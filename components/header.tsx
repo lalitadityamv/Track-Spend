@@ -4,6 +4,7 @@ import {Navigation} from "./navigation"
 import { WelcomeMsg } from "./welcome-msg";
 
 import { UserButton,ClerkLoaded,ClerkLoading} from "@clerk/nextjs";
+import { Filters } from "./filters";
 export const Header = () => {
   return (
     <header className="bg-gradient-to-r from-stone-100 to-stone-300 px-4 py-8 lg:px-14 pb-36">
@@ -21,6 +22,7 @@ export const Header = () => {
             </ClerkLoading>
         </div>
         <WelcomeMsg/>
+        <Filters/>
       </div>
     </header>
   );
